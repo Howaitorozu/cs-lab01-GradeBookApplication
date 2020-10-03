@@ -114,25 +114,45 @@ namespace GradeBook.GradeBooks
         {
             //dodane
             double extraPointsForStudent = 0.0;
-            if ( studentType == StudentType.DualEnrolled  || studentType==StudentType.Honors)
+            if (IsWeighted == true)
             {
-                extraPointsForStudent += 1;
+                if (studentType == StudentType.DualEnrolled || studentType == StudentType.Honors)
+                {
+                    extraPointsForStudent += 1;
+                }
+                switch (letterGrade)
+                {
+                    case 'A':
+                        return extraPointsForStudent += 4;
+                    case 'B':
+                        return extraPointsForStudent += 3;
+                    case 'C':
+                        return extraPointsForStudent += 2;
+                    case 'D':
+                        return extraPointsForStudent += 1;
+                    case 'F':
+                        return extraPointsForStudent += 0;
+                }
+                return extraPointsForStudent += 0;
             }
-            switch (letterGrade)
+            else
             {
-                case 'A':
-                    return extraPointsForStudent+=4;
-                case 'B':
-                    return extraPointsForStudent+=3;
-                case 'C':
-                    return extraPointsForStudent+=2;
-                case 'D':
-                    return extraPointsForStudent+=1;
-                case 'F':
-                    return extraPointsForStudent+=0;
+                switch (letterGrade)
+                {
+                    case 'A':
+                        return  4;
+                    case 'B':
+                        return  3;
+                    case 'C':
+                        return  2;
+                    case 'D':
+                        return 1;
+                    case 'F':
+                        return  0;
+                }
+                return extraPointsForStudent += 0;
             }
-            return extraPointsForStudent+=0;
-        }
+        } 
 
         public virtual void CalculateStatistics()
         {
@@ -144,6 +164,7 @@ namespace GradeBook.GradeBooks
             var standardPoints = 0d;
             var honorPoints = 0d;
             var dualEnrolledPoints = 0d;
+
 
             foreach (var student in Students)
             {
