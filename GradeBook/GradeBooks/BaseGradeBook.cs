@@ -112,20 +112,26 @@ namespace GradeBook.GradeBooks
 
         public virtual double GetGPA(char letterGrade, StudentType studentType)
         {
+            //dodane
+            double extraPointsForStudent = 0.0;
+            if ( studentType == StudentType.DualEnrolled  || studentType==StudentType.Honors)
+            {
+                extraPointsForStudent += 1;
+            }
             switch (letterGrade)
             {
                 case 'A':
-                    return 4;
+                    return extraPointsForStudent+=4;
                 case 'B':
-                    return 3;
+                    return extraPointsForStudent+=3;
                 case 'C':
-                    return 2;
+                    return extraPointsForStudent+=2;
                 case 'D':
-                    return 1;
+                    return extraPointsForStudent+=1;
                 case 'F':
-                    return 0;
+                    return extraPointsForStudent+=0;
             }
-            return 0;
+            return extraPointsForStudent+=0;
         }
 
         public virtual void CalculateStatistics()
