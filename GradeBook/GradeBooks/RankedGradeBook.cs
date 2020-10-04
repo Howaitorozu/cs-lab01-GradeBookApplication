@@ -23,7 +23,31 @@ namespace GradeBook.GradeBooks
                     studentsWithHigherGradeCount += 1;
                 }
             }
-            return 'A';
+
+            double result = studentsWithHigherGradeCount / studentsTwentyPercent;
+
+            if (Students.Count < 5)
+            {
+                throw new InvalidOperationException("Less than 5 students");
+            }
+            if (result <= 0)
+            {
+                return 'A';
+            }
+            else if (result <= 1)
+            {
+                return 'B';
+            }
+            else if (result <= 2)
+            {
+                return 'C';
+            }
+            else if (result <= 3)
+            {
+                return 'D';
+            }
+            else
+                return 'F';
 
         }
 
