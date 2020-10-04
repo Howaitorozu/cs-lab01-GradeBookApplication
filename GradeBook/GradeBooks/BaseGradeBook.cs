@@ -113,7 +113,7 @@ namespace GradeBook.GradeBooks
         public virtual double GetGPA(char letterGrade, StudentType studentType)
         {
             //dodane
-            double extraPointsForStudent = 0.0;
+            int extraPointsForStudent = 0;
             if (IsWeighted == true)
             {
                 if (studentType == StudentType.DualEnrolled || studentType == StudentType.Honors)
