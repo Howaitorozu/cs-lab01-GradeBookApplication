@@ -57,7 +57,7 @@ namespace GradeBook.UserInterfaces
             }
             else if (name == "ranked")
             {
-                StandardGradeBook gradeBook = new StandardGradeBook(name, bool.Parse(isWeighted));
+                RankedGradeBook gradeBook = new RankedGradeBook(name, bool.Parse(isWeighted));
                 Console.WriteLine("Created gradebook {0}.", name);
                 GradeBookUserInterface.CommandLoop(gradeBook);
             }
